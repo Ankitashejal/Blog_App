@@ -1,23 +1,19 @@
-import express from "express"; //importing express from express
+import express from "express"; // Importing express from express
 import connectToMongo from "./config/db.js";
-import authRoutes from "./routes/log.js";
-const app = express();         //creating instance of express
-const port = 9000;               //defining port
+import router from "./routes/blog.js"; "./blog.js";
+
+const app = express(); // Creating an instance of express
+const port = 9000; // Defining port
 
 connectToMongo();
 
 app.get("/", (req, res) => {
-    res.send("API is runnning..");
-  });
+  res.send("API is running..");
+});
 
-  //Api Router
-  app.use("/api/v1/authRoutes") 
-  
-  app.listen(port, () => {
-    console.log('API is running on http://localhost:$(port) '); //creates a simple web server 
-  });  //This line starts the server and tells it to listen for incoming requests on the specified port
-    
+// API Router
+app.use("/api/v1/", router);
 
-  
-
-
+app.listen(port, () => {
+  console.log(`API is running on http://localhost:${port}`); // Use backticks for template literals
+});

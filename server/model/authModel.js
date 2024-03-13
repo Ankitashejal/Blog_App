@@ -1,5 +1,7 @@
 import express  from "express";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+
+const mongoose = require('mongoose')
 
 const authSchema =new mongoose.Schema({
     username:{
@@ -14,5 +16,5 @@ const authSchema =new mongoose.Schema({
     }
 });
 
-const authModel = mongoose.model("users", authSchema);
-export default authModel;
+const Users = mongoose.model("Users", authSchema);
+module.exports = Users;
